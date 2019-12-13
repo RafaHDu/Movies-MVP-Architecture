@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Result implements Parcelable {
@@ -79,10 +80,12 @@ public class Result implements Parcelable {
         this.id = parcel.readInt();
         this.backdropPath = parcel.readString();
         this.originalLanguage = parcel.readString();
-        this.originalTitle = parcel.readString();
+        this.title = parcel.readString();
         this.voteAverage = parcel.readDouble();
-        this.overview = parcel.readString();
         this.releaseDate = parcel.readString();
+
+        this.genreIds = new ArrayList<Integer>();
+        parcel.readList(this.genreIds, Integer.class.getClassLoader());
         /*Exemplo na lista
         this.genreIds = new ArrayList<Integer>();
         parcel.readList(this.genreIds, Integer.class.getClassLoader());*/
@@ -217,10 +220,10 @@ public class Result implements Parcelable {
         dest.writeInt(id);
         dest.writeString(backdropPath);
         dest.writeString(originalLanguage);
-        dest.writeString(originalTitle);
+        dest.writeString(title);
         dest.writeDouble(voteAverage);
-        dest.writeString(overview);
         dest.writeString(releaseDate);
+        dest.writeList(genreIds);
     }
 
 

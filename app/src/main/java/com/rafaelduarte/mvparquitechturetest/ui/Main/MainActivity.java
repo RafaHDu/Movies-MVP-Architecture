@@ -97,9 +97,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         rvMovies.setItemAnimator(null);
     }
 
-    private void getMovieList() {
-        mainPresenter.getMovies();
-    }
+    private void getMovieList() { mainPresenter.getMovies(); }
 
     @Override
     public void showToast(String s) {
@@ -131,9 +129,9 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         Intent intent = new Intent(MainActivity.this, MovieDetailActivity.class);
         intent.putExtra(EXTRA_RESULT, result);
         //create the animation
-        //ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, "sharedName");
-        //startActivity(intent, options.toBundle());
-        startActivity(intent);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, "sharedName");
+        startActivity(intent, options.toBundle());
+        //startActivity(intent);
     }
 
     @Override

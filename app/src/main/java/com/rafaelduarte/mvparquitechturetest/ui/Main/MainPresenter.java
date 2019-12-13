@@ -16,7 +16,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class MainPresenter implements MainPresenterInterface{
+public class MainPresenter {
 
     private MainViewInterface mvi;
     private String TAG = "MainPresenter";
@@ -26,7 +26,7 @@ public class MainPresenter implements MainPresenterInterface{
         this.mvi = mvi;
     }
 
-    public Observable<MovieResponse> getObservable(){
+    private Observable<MovieResponse> getObservable(){
         return NetworkClient.getRetrofit().create(NetworkInterface.class)
                 .getMovies("fe31a23578bbe0ec3effe1caeb27f00d", "en-US", mCurrentPage)
                 .subscribeOn(Schedulers.io())
@@ -37,7 +37,6 @@ public class MainPresenter implements MainPresenterInterface{
         mvi.openMovieDetailActivity(result, imageView);
     }
 
-    @Override
     public void getMovies() {
         getObservable().subscribeWith(getObserver());
     }
@@ -47,7 +46,7 @@ public class MainPresenter implements MainPresenterInterface{
         getMovies();
     }
 
-    public DisposableObserver<MovieResponse> getObserver(){
+    private DisposableObserver<MovieResponse> getObserver(){
         return new DisposableObserver<MovieResponse>() {
 
             @Override

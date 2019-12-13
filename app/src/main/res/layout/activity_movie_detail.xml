@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white_40"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@color/white"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbarMovieDetail">
@@ -48,14 +48,12 @@
                     android:id="@+id/cvMovieDetailPoster"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="32dp"
                     app:cardBackgroundColor="@android:color/transparent"
                     app:cardCornerRadius="6dp"
-                    app:cardElevation="6dp"
+                    app:cardElevation="12dp"
                     app:cardPreventCornerOverlap="false"
-                    app:layout_constraintBottom_toTopOf="@+id/guidelineClBottom"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvGenre"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
@@ -63,8 +61,8 @@
 
                     <ImageView
                         android:id="@+id/ivMovieDetailPoster"
-                        android:layout_width="160dp"
-                        android:layout_height="250dp"
+                        android:layout_width="130dp"
+                        android:layout_height="200dp"
                         android:layout_centerVertical="true"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
@@ -83,8 +81,8 @@
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:gravity="right"
-                    android:maxLines="1"
-                    android:text="Her"
+                    android:maxLines="2"
+                    android:text="Her Her Her Her Her Her Her "
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -123,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:text="Released"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/black_80"
                             android:textSize="11sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/guidelineCenterHorizontal"
@@ -150,7 +148,7 @@
                             android:layout_height="wrap_content"
                             android:text="Rating"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/black_80"
                             android:textSize="11sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/guidelineCenterHorizontal"
@@ -197,7 +195,7 @@
                             android:layout_height="wrap_content"
                             android:text="Language"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/black_80"
                             android:textSize="11sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/guidelineCenterHorizontal"
@@ -210,43 +208,43 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/tvDescription"
+                    android:id="@+id/tvGenre"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:gravity="right"
-                    android:maxLines="8"
+                    android:maxLines="2"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="@+id/cvMovieDetailPoster"
                     app:layout_constraintEnd_toStartOf="@+id/cvMovieDetailPoster"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cvMovieDetails"
-                    tools:text="In the not so distant future, Theodore, a lonely writer purchases a newly developed operating system designed to meet the user's every needs. To Theodore's surprise, a romantic relationship develops between him and his operating system. This unconventional love story blends science fiction and romance in a sweet tale that explores the nature of love and the ways that technology isolates and connects us all." />
+                    tools:text="Adventure, Drama, Thriller, Comedy, Comedy, Comedy" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guidelineClBottom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_begin="440dp" />
+                    app:layout_constraintGuide_begin="380dp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clBottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/guidelineClBottom"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGenre"
                     app:layout_constraintVertical_bias="0.0">
 
                     <androidx.cardview.widget.CardView
@@ -255,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         app:cardCornerRadius="4dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         app:cardPreventCornerOverlap="false"
                         app:layout_constraintEnd_toStartOf="@+id/cvWatchlist"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -276,14 +274,14 @@
                                 android:id="@+id/tvWatched"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="8dp"
                                 android:text="Mark as watched"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"
+                                android:textSize="11sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -301,9 +299,11 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="12dp"
                         app:cardCornerRadius="4dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         app:cardPreventCornerOverlap="false"
+                        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalButtonsTabs"
                         app:layout_constraintEnd_toStartOf="@+id/cvCollection"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/cvWatched"
@@ -323,14 +323,14 @@
                                 android:id="@+id/tvWatchlist"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="8dp"
                                 android:text="Add to watchlist"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"
+                                android:textSize="11sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -347,7 +347,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         app:cardCornerRadius="4dp"
-                        app:cardElevation="6dp"
+                        app:cardElevation="2dp"
                         app:cardPreventCornerOverlap="false"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -368,14 +368,14 @@
                                 android:id="@+id/tvCollection"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="8dp"
                                 android:text="Add to collection"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"
+                                android:textSize="11sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -393,41 +393,11 @@
                         android:orientation="horizontal"
                         app:layout_constraintGuide_begin="66dp" />
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tabsMovieDetail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalButtonsTabs"
-                        app:tabIndicatorColor="@color/colorPrimaryDark"
-                        app:tabIndicatorHeight="2dp"
-                        app:tabSelectedTextColor="@color/colorPrimaryDark"
-                        app:tabTextAppearance="@style/TabPeopleTextSize"
-                        app:tabTextColor="@color/black_60">
-
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Overview" />
-
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Reviews" />
-
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Comments" />
-
-                    </com.google.android.material.tabs.TabLayout>
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbarMovieDetail"
                 style="@style/ToolBarWithNavigationBack"
                 android:layout_width="match_parent"
@@ -437,22 +407,45 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabsMovieDetail"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalButtonsTabs"
+            app:tabIndicatorColor="@color/colorPrimaryDark"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
+            app:tabTextAppearance="@style/TabPeopleTextSize"
+            app:tabTextColor="@color/black_60">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Overview" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comments" />
+
+        </com.google.android.material.tabs.TabLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScroolViewMoviDetail"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMovieDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.MovieDetail.MovieDetailActivity">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPagerMovieDetail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-    </androidx.core.widget.NestedScrollView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

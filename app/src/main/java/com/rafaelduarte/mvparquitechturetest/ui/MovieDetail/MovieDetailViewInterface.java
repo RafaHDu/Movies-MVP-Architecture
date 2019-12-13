@@ -1,5 +1,7 @@
 package com.rafaelduarte.mvparquitechturetest.ui.MovieDetail;
 
+import java.util.ArrayList;
+
 public interface MovieDetailViewInterface {
 
     void displayUI(final String pathPoster,
@@ -8,7 +10,7 @@ public interface MovieDetailViewInterface {
                    final String year,
                    final String language,
                    final String rating,
-                   final String overview,
-                   final int id);
+                   final int id,
+                   final String genres);
 
 }
