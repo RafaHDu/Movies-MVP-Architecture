@@ -1,22 +1,30 @@
 package com.rafaelduarte.mvparquitechturetest.ui.Main;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.AbsListView;
-import android.widget.Toast;
-
 import com.rafaelduarte.mvparquitechturetest.R;
 import com.rafaelduarte.mvparquitechturetest.adapters.MoviesAdapter;
 import com.rafaelduarte.mvparquitechturetest.models.MovieResponse;
 import com.rafaelduarte.mvparquitechturetest.models.Result;
+import com.rafaelduarte.mvparquitechturetest.ui.MovieDetail.MovieDetailActivity;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -25,10 +33,10 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements MainViewInterface, SwipeRefreshLayout.OnRefreshListener{
 
     @BindView(R.id.rvMovies)
-    RecyclerView rvMovies;
+            RecyclerView rvMovies;
     @BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout swipeRefresh;
-
+            SwipeRefreshLayout swipeRefresh;
+    public static final String EXTRA_RESULT = "movieDetailResult";
     LinearLayoutManager layoutManager;
     MoviesAdapter adapter;
     MainPresenter mainPresenter;
@@ -119,8 +127,13 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     }
 
     @Override
-    public void displayResult(Result result) {
-        Toast.makeText(this, result.getTitle(), Toast.LENGTH_SHORT).show();
+    public void openMovieDetailActivity(Result result, ImageView imageView) {
+        Intent intent = new Intent(MainActivity.this, MovieDetailActivity.class);
+        intent.putExtra(EXTRA_RESULT, result);
+        //create the animation
+        //ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, "sharedName");
+        //startActivity(intent, options.toBundle());
+        startActivity(intent);
     }
 
     @Override

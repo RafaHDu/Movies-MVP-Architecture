@@ -1,11 +1,14 @@
 package com.rafaelduarte.mvparquitechturetest.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Result {
+public class Result implements Parcelable {
 
     @SerializedName("popularity")
     @Expose
@@ -50,24 +53,39 @@ public class Result {
     @Expose
     private String releaseDate;
 
-    public Result() {
-    }
+    public Result() {}
 
     public Result(Double popularity, Integer voteCount, Boolean video, String posterPath, Integer id, Boolean adult, String backdropPath, String originalLanguage, String originalTitle, List<Integer> genreIds, String title, Double voteAverage, String overview, String releaseDate) {
-        this.popularity = popularity;
-        this.voteCount = voteCount;
-        this.video = video;
-        this.posterPath = posterPath;
-        this.id = id;
-        this.adult = adult;
-        this.backdropPath = backdropPath;
-        this.originalLanguage = originalLanguage;
-        this.originalTitle = originalTitle;
-        this.genreIds = genreIds;
-        this.title = title;
-        this.voteAverage = voteAverage;
-        this.overview = overview;
-        this.releaseDate = releaseDate;
+        setPopularity(popularity);
+        setVoteCount(voteCount);
+        setVideo(video);
+        setPosterPath(posterPath);
+        setId(id);
+        setAdult(adult);
+        setBackdropPath(backdropPath);
+        setOriginalLanguage(originalLanguage);
+        setOriginalTitle(originalTitle);
+        setGenreIds(genreIds);
+        setTitle(title);
+        setVoteAverage(voteAverage);
+        setOverview(overview);
+        setReleaseDate(releaseDate);
+    }
+
+
+    public Result(Parcel parcel) {
+        //Corresponde ao Deserialize **Tem que estar na mesma ordem do Serialize**
+        this.posterPath = parcel.readString();
+        this.id = parcel.readInt();
+        this.backdropPath = parcel.readString();
+        this.originalLanguage = parcel.readString();
+        this.originalTitle = parcel.readString();
+        this.voteAverage = parcel.readDouble();
+        this.overview = parcel.readString();
+        this.releaseDate = parcel.readString();
+        /*Exemplo na lista
+        this.genreIds = new ArrayList<Integer>();
+        parcel.readList(this.genreIds, Integer.class.getClassLoader());*/
     }
 
     public Double getPopularity() {
@@ -181,5 +199,42 @@ public class Result {
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        //Corresponde ao Serialize **Tem que estar na mesma ordem do Deserialize**
+        //pega todas as entidades acima e escreve no Parcel (que é o objecto usado no transporte)
+        //'flags' serve para tratar os dados de forma especial ao enviar com valores 0 e 1.
+
+        //Exemplo de boolean --> dest.writeByte((byte) (video ? 1 : 0));
+        //Exemplo de Lista --> dest.writeList(genreIds);
+        dest.writeString(posterPath);
+        dest.writeInt(id);
+        dest.writeString(backdropPath);
+        dest.writeString(originalLanguage);
+        dest.writeString(originalTitle);
+        dest.writeDouble(voteAverage);
+        dest.writeString(overview);
+        dest.writeString(releaseDate);
+    }
+
+
+    public static final Parcelable.Creator<Result> CREATOR = new Parcelable.Creator<Result>(){
+        @Override
+        public Result createFromParcel(Parcel source) {
+            //pega no Parcel (que foi preenchido no writeToParcel) e instanceia o objecto Result (com o construtor do Deserialize)
+            return new Result(source);
+        }
+
+        @Override
+        public Result[] newArray(int size) {
+            return new Result[size];
+        }
+    };
 
 }

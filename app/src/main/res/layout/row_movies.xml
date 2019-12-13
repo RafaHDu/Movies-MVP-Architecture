@@ -123,7 +123,8 @@
                 android:layout_height="150dp"
                 android:layout_centerVertical="true"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/f" />
+                tools:src="@drawable/f"
+                android:transitionName="sharedName"/>
 
         </androidx.cardview.widget.CardView>
 

@@ -1,6 +1,7 @@
 package com.rafaelduarte.mvparquitechturetest.ui.Main;
 
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.rafaelduarte.mvparquitechturetest.models.MovieResponse;
 import com.rafaelduarte.mvparquitechturetest.models.Result;
@@ -27,13 +28,13 @@ public class MainPresenter implements MainPresenterInterface{
 
     public Observable<MovieResponse> getObservable(){
         return NetworkClient.getRetrofit().create(NetworkInterface.class)
-                .getMovies("fe31a23578bbe0ec3effe1caeb27f00d", "fr-FR", mCurrentPage)
+                .getMovies("fe31a23578bbe0ec3effe1caeb27f00d", "en-US", mCurrentPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public void onItemInteraction(Result result){
-        mvi.displayResult(result);
+    public void onItemInteraction(Result result, ImageView imageView){
+        mvi.openMovieDetailActivity(result, imageView);
     }
 
     @Override

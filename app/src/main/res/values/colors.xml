@@ -3,11 +3,15 @@
 
     <color name="bg">#0a1722</color>
     <color name="white">#FFFFFF</color>
+    <color name="white_20">#33ffffff</color>
     <color name="white_40">#66ffffff</color>
     <color name="white_60">#99ffffff</color>
     <color name="white_80">#CCffffff</color>
 
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_80">#CC000000</color>
+
+    <color name="colorPrimary">#9abdeb</color>
+    <color name="colorPrimaryDark">#698db9</color>
+    <color name="colorAccent">#80f9b7</color>
 </resources>

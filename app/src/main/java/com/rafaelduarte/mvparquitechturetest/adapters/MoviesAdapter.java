@@ -87,7 +87,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
                 //It shouldn't know anything about views, RecyclerView, Adapter or ViewHolder.
 
                 //mainPresenter.onItemInteraction(getAdapterPosition());
-                mainPresenter.onItemInteraction(movieList.get(getAdapterPosition()));
+                mainPresenter.onItemInteraction(movieList.get(getAdapterPosition()), ivMoviePoster);
             }
         }
 
