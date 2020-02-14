@@ -3,14 +3,14 @@ package com.rafaelduarte.mvparquitechturetest.ui.MovieDetail;
 import android.content.Context;
 import android.content.res.Configuration;
 
-import com.rafaelduarte.mvparquitechturetest.models.Result;
+import com.rafaelduarte.mvparquitechturetest.models.TMDB.MovieResponse.ResultMovies;
 
 import java.util.Locale;
 
 public class MovieDetailPresenter {
 
     MovieDetailViewInterface mdvi;
-    private Result result;
+    private ResultMovies result;
     private Context context;
 
     public MovieDetailPresenter(MovieDetailViewInterface mdvi, Context context){
@@ -18,7 +18,7 @@ public class MovieDetailPresenter {
         this.context = context;
     }
 
-    public void setResult(Result result){
+    public void setResult(ResultMovies result){
         this.result = result;
     }
 
@@ -37,7 +37,6 @@ public class MovieDetailPresenter {
         Configuration config = new Configuration();
         config.locale = loc;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-        //TODO: TENHO DE MUDAR ISTO PARA QUANDO PODER MUDAR AS LINGUAGENS  aqui no 'en'
         Locale locale = new Locale("en");
         language = loc.getDisplayLanguage(locale);
 

@@ -3,12 +3,10 @@ package com.rafaelduarte.mvparquitechturetest.ui.Main;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.rafaelduarte.mvparquitechturetest.models.MovieResponse;
-import com.rafaelduarte.mvparquitechturetest.models.Result;
-import com.rafaelduarte.mvparquitechturetest.network.NetworkClient;
-import com.rafaelduarte.mvparquitechturetest.network.NetworkInterface;
-
-import java.util.ArrayList;
+import com.rafaelduarte.mvparquitechturetest.models.TMDB.MovieResponse.MovieResponse;
+import com.rafaelduarte.mvparquitechturetest.models.TMDB.MovieResponse.ResultMovies;
+import com.rafaelduarte.mvparquitechturetest.network.TMDB.TMDBNetworkClient;
+import com.rafaelduarte.mvparquitechturetest.network.TMDB.TMDBNetworkInterface;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -27,13 +25,13 @@ public class MainPresenter {
     }
 
     private Observable<MovieResponse> getObservable(){
-        return NetworkClient.getRetrofit().create(NetworkInterface.class)
+        return TMDBNetworkClient.getRetrofit().create(TMDBNetworkInterface.class)
                 .getMovies("fe31a23578bbe0ec3effe1caeb27f00d", "en-US", mCurrentPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public void onItemInteraction(Result result, ImageView imageView){
+    public void onItemInteraction(ResultMovies result, ImageView imageView){
         mvi.openMovieDetailActivity(result, imageView);
     }
 

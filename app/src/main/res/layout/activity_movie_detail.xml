@@ -93,7 +93,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/ivMovieDetailBG" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cvMovieDetails"
+                    android:id="@+id/cvStoryline"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="16dp"
@@ -225,7 +225,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/cvMovieDetailPoster"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cvMovieDetails"
+                    app:layout_constraintTop_toBottomOf="@+id/cvStoryline"
                     tools:text="Adventure, Drama, Thriller, Comedy, Comedy, Comedy" />
 
                 <androidx.constraintlayout.widget.Guideline

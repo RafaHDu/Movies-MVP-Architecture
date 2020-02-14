@@ -1,11 +1,11 @@
-package com.rafaelduarte.mvparquitechturetest.network;
+package com.rafaelduarte.mvparquitechturetest.network.TMDB;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class NetworkClient {
+public class TMDBNetworkClient {
 
     public static Retrofit retrofit;
 

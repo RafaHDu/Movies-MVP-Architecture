@@ -20,7 +20,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 import com.rafaelduarte.mvparquitechturetest.R;
-import com.rafaelduarte.mvparquitechturetest.models.Result;
+import com.rafaelduarte.mvparquitechturetest.models.TMDB.MovieResponse.ResultMovies;
 import com.rafaelduarte.mvparquitechturetest.ui.MovieDetail.CommentsFragment.CommentsFragment;
 import com.rafaelduarte.mvparquitechturetest.ui.MovieDetail.OverviewFragment.OverviewFragment;
 import com.rafaelduarte.mvparquitechturetest.ui.MovieDetail.ReviewsFragment.ReviewsFragment;
@@ -71,7 +71,7 @@ public class MovieDetailActivity extends AppCompatActivity implements MovieDetai
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        Result result = intent.getParcelableExtra(EXTRA_RESULT);
+        ResultMovies result = intent.getParcelableExtra(EXTRA_RESULT);
 
         setupMVP();
         movieDetailPresenter.setResult(result);
@@ -140,7 +140,7 @@ public class MovieDetailActivity extends AppCompatActivity implements MovieDetai
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return OverviewFragment.newInstance("","");
+                    return OverviewFragment.newInstance(MOVIE_ID);
                 case 1:
                     return ReviewsFragment.newInstance("","");
                 case 2:

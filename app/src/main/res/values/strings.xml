@@ -3,4 +3,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="test">In the not so distant future, Theodore, a lonely writer purchases a newly developed operating system designed to meet the users every needs. To Theodores surprise, a romantic relationship develops between him and his operating system. This unconventional love story blends science fiction and romance in a sweet tale that explores the nature of love and the ways that technology isolates and connects us all.</string>
+    <string name="title_activity_bottom_nav">BottomNavActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_traillers">Traillers</string>
+    <string name="title_search">Search</string>
+    <string name="title_profile">Profile</string>
+
 </resources>

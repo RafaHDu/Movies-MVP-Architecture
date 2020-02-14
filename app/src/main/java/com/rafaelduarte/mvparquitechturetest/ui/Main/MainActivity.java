@@ -1,10 +1,8 @@
 package com.rafaelduarte.mvparquitechturetest.ui.Main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -12,20 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.rafaelduarte.mvparquitechturetest.R;
-import com.rafaelduarte.mvparquitechturetest.adapters.MoviesAdapter;
-import com.rafaelduarte.mvparquitechturetest.models.MovieResponse;
-import com.rafaelduarte.mvparquitechturetest.models.Result;
+import com.rafaelduarte.mvparquitechturetest.adapters.Home.TraktTvAnticipatedAdapter;
+import com.rafaelduarte.mvparquitechturetest.models.TMDB.MovieResponse.MovieResponse;
+import com.rafaelduarte.mvparquitechturetest.models.TMDB.MovieResponse.ResultMovies;
 import com.rafaelduarte.mvparquitechturetest.ui.MovieDetail.MovieDetailActivity;
-
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             SwipeRefreshLayout swipeRefresh;
     public static final String EXTRA_RESULT = "movieDetailResult";
     LinearLayoutManager layoutManager;
-    MoviesAdapter adapter;
+    TraktTvAnticipatedAdapter adapter;
     MainPresenter mainPresenter;
     boolean isScrolling = false;
 
@@ -87,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     private void setupViews(){
         swipeRefresh.setOnRefreshListener(this);
         //rvMovies.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MoviesAdapter(new ArrayList<>(), MainActivity.this, mainPresenter);
+        //
+        // adapter = new TraktTvAnticipatedAdapter(new ArrayList<>(), MainActivity.this, mainPresenter);
         rvMovies.setAdapter(adapter);
 
         layoutManager = new LinearLayoutManager(this);
@@ -109,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         String TAG = "MainActivity";
         if(movieResponse!=null) {
             Log.d(TAG,movieResponse.getResults().get(1).getTitle());
-            //adapter = new MoviesAdapter(movieResponse.getResults(), MainActivity.this, mainPresenter);
-            adapter.addItems(movieResponse.getResults());
+            //adapter = new TraktTvAnticipatedAdapter(movieResponse.getResults(), MainActivity.this, mainPresenter);
+
             /*if (mainPresenter.mCurrentPage != 1){
                 adapter.notifyDataSetChanged();
             }*/
@@ -125,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     }
 
     @Override
-    public void openMovieDetailActivity(Result result, ImageView imageView) {
+    public void openMovieDetailActivity(ResultMovies result, ImageView imageView) {
         Intent intent = new Intent(MainActivity.this, MovieDetailActivity.class);
         intent.putExtra(EXTRA_RESULT, result);
         //create the animation

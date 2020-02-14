@@ -1,16 +1,15 @@
-package com.rafaelduarte.mvparquitechturetest.models;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.rafaelduarte.mvparquitechturetest.models.TMDB.ListsResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Result implements Parcelable {
+public class Item {
 
+    @SerializedName("poster_path")
+    @Expose
+    private String posterPath;
     @SerializedName("popularity")
     @Expose
     private Double popularity;
@@ -20,9 +19,9 @@ public class Result implements Parcelable {
     @SerializedName("video")
     @Expose
     private Boolean video;
-    @SerializedName("poster_path")
+    @SerializedName("media_type")
     @Expose
-    private String posterPath;
+    private String mediaType;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -53,42 +52,25 @@ public class Result implements Parcelable {
     @SerializedName("release_date")
     @Expose
     private String releaseDate;
+    @SerializedName("original_name")
+    @Expose
+    private String originalName;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("first_air_date")
+    @Expose
+    private String firstAirDate;
+    @SerializedName("origin_country")
+    @Expose
+    private List<String> originCountry = null;
 
-    public Result() {}
-
-    public Result(Double popularity, Integer voteCount, Boolean video, String posterPath, Integer id, Boolean adult, String backdropPath, String originalLanguage, String originalTitle, List<Integer> genreIds, String title, Double voteAverage, String overview, String releaseDate) {
-        setPopularity(popularity);
-        setVoteCount(voteCount);
-        setVideo(video);
-        setPosterPath(posterPath);
-        setId(id);
-        setAdult(adult);
-        setBackdropPath(backdropPath);
-        setOriginalLanguage(originalLanguage);
-        setOriginalTitle(originalTitle);
-        setGenreIds(genreIds);
-        setTitle(title);
-        setVoteAverage(voteAverage);
-        setOverview(overview);
-        setReleaseDate(releaseDate);
+    public String getPosterPath() {
+        return posterPath;
     }
 
-
-    public Result(Parcel parcel) {
-        //Corresponde ao Deserialize **Tem que estar na mesma ordem do Serialize**
-        this.posterPath = parcel.readString();
-        this.id = parcel.readInt();
-        this.backdropPath = parcel.readString();
-        this.originalLanguage = parcel.readString();
-        this.title = parcel.readString();
-        this.voteAverage = parcel.readDouble();
-        this.releaseDate = parcel.readString();
-
-        this.genreIds = new ArrayList<Integer>();
-        parcel.readList(this.genreIds, Integer.class.getClassLoader());
-        /*Exemplo na lista
-        this.genreIds = new ArrayList<Integer>();
-        parcel.readList(this.genreIds, Integer.class.getClassLoader());*/
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
     public Double getPopularity() {
@@ -115,12 +97,12 @@ public class Result implements Parcelable {
         this.video = video;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
     public Integer getId() {
@@ -203,41 +185,36 @@ public class Result implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getOriginalName() {
+        return originalName;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        //Corresponde ao Serialize **Tem que estar na mesma ordem do Deserialize**
-        //pega todas as entidades acima e escreve no Parcel (que é o objecto usado no transporte)
-        //'flags' serve para tratar os dados de forma especial ao enviar com valores 0 e 1.
-
-        //Exemplo de boolean --> dest.writeByte((byte) (video ? 1 : 0));
-        //Exemplo de Lista --> dest.writeList(genreIds);
-        dest.writeString(posterPath);
-        dest.writeInt(id);
-        dest.writeString(backdropPath);
-        dest.writeString(originalLanguage);
-        dest.writeString(title);
-        dest.writeDouble(voteAverage);
-        dest.writeString(releaseDate);
-        dest.writeList(genreIds);
+    public void setOriginalName(String originalName) {
+        this.originalName = originalName;
     }
 
+    public String getName() {
+        return name;
+    }
 
-    public static final Parcelable.Creator<Result> CREATOR = new Parcelable.Creator<Result>(){
-        @Override
-        public Result createFromParcel(Parcel source) {
-            //pega no Parcel (que foi preenchido no writeToParcel) e instanceia o objecto Result (com o construtor do Deserialize)
-            return new Result(source);
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        @Override
-        public Result[] newArray(int size) {
-            return new Result[size];
-        }
-    };
+    public String getFirstAirDate() {
+        return firstAirDate;
+    }
+
+    public void setFirstAirDate(String firstAirDate) {
+        this.firstAirDate = firstAirDate;
+    }
+
+    public List<String> getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(List<String> originCountry) {
+        this.originCountry = originCountry;
+    }
 
 }

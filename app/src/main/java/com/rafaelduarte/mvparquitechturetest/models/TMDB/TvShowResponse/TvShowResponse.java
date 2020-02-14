@@ -1,24 +1,24 @@
-package com.rafaelduarte.mvparquitechturetest.models;
+package com.rafaelduarte.mvparquitechturetest.models.TMDB.TvShowResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MovieResponse {
+public class TvShowResponse {
 
     @SerializedName("page")
     @Expose
     private Integer page;
-    @SerializedName("total_results")
+    @SerializedName("results")
     @Expose
-    private Integer totalResults;
+    private List<ResultTvShow> results = null;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
-    @SerializedName("results")
+    @SerializedName("total_results")
     @Expose
-    private List<Result> results = null;
+    private Integer totalResults;
 
     public Integer getPage() {
         return page;
@@ -28,12 +28,12 @@ public class MovieResponse {
         this.page = page;
     }
 
-    public Integer getTotalResults() {
-        return totalResults;
+    public List<ResultTvShow> getResults() {
+        return results;
     }
 
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
+    public void setResults(List<ResultTvShow> results) {
+        this.results = results;
     }
 
     public Integer getTotalPages() {
@@ -44,12 +44,12 @@ public class MovieResponse {
         this.totalPages = totalPages;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public Integer getTotalResults() {
+        return totalResults;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setTotalResults(Integer totalResults) {
+        this.totalResults = totalResults;
     }
 
 }
