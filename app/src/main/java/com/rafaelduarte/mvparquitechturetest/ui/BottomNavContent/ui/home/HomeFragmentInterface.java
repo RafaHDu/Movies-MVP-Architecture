@@ -49,7 +49,7 @@ public interface HomeFragmentInterface {
     //Collections
     void displayCollections(List<CollectionsModel> collectionsModelList);
 
-    //
+    //People
     void displayPeople(People people);
 
 

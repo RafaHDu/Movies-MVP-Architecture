@@ -42,7 +42,7 @@ public class HomeFragmentPresenter {
 
 
 
-    //*****************************   Networks Lists (Movies)   ***********************************
+    //*****************************   Networks Lists (Movies)   ************************************
     private Observable<ListsResponse> getObservableList(String list){
         return TMDBNetworkClient.getRetrofit().create(TMDBNetworkInterface.class)
                 .getList(list, "fe31a23578bbe0ec3effe1caeb27f00d", "en-US")
